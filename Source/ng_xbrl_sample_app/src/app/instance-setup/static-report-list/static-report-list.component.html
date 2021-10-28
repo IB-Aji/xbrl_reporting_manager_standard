@@ -1,0 +1,123 @@
+<nb-card>
+    <nb-card-header>List of Static Report Submission</nb-card-header>
+    <nb-card-body>
+  
+      <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+          <button pButton label="Add New" icon="pi pi-plus" class="p-button-raised p-mr-2"
+            pTooltip="Add New Static Report" (click)="redirectNewStaticReportPage()"></button>
+        </ng-template>
+        <ng-template pTemplate="right">
+          <button pButton label="" icon="pi pi-refresh" class="p-button-raised p-mr-2"
+          pTooltip="Refresh list" (click)="getAllStaticReportHeaderForUser()"></button>
+      </ng-template>
+      </p-toolbar>
+  
+      <p-table #dtStaticReport [value]="staticReportHeaders" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [resizableColumns]="true" [responsive]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Initiated Reports">
+  
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 65px;"></th>
+            <th pSortableColumn="taxonomyReleaseDate">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="taxonomyReleaseDate"></p-sortIcon>
+                Taxonomy
+                <p-columnFilter type="date" field="taxonomyReleaseDate" display="menu"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="sector" pResizableColumn>
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="sector"></p-sortIcon>
+                Sector
+                <p-columnFilter type="text" field="sector" display="menu"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="frequencePeriod">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="frequencePeriod"></p-sortIcon>
+                Reporting Freq
+                <p-columnFilter type="text" field="frequencePeriod" display="menu"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="unitCurrency">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                  <p-sortIcon field="unitCurrency"></p-sortIcon>
+                  Unit Currency
+                  <p-columnFilter type="text" field="unitCurrency" display="menu"></p-columnFilter>
+                </div>
+            </th>
+            <th pSortableColumn="dataPeriod">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="dataPeriod"></p-sortIcon>
+                Period
+                <p-columnFilter type="text" field="dataPeriod" display="menu"></p-columnFilter>
+              </div>
+          </th>
+            <th pSortableColumn="status">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="status"></p-sortIcon>
+                Status
+                <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="updateBy">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="updateBy"></p-sortIcon>
+                Updated By
+                <p-columnFilter type="text" field="updateBy" display="menu"></p-columnFilter>
+              </div>
+            </th>
+            <th pSortableColumn="updateDate">
+              <div class="p-d-flex p-jc-between p-ai-center">
+                <p-sortIcon field="updateDate"></p-sortIcon>
+                Updated Date
+                <p-columnFilter type="date" field="updateDate" display="menu"></p-columnFilter>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-header>
+          <tr>
+            <td>
+              <button pButton pRipple icon="pi pi-pencil" class="p-button-raised p-button-rounded p-button-warning p-mr-2"
+                pTooltip="Open Unsubmitted Report" (click)="openUnSubmittedPage(header)"></button>
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.taxonomyReleaseDate | date: 'yyyy-MM-dd' }}
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.sector}}
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.frequencePeriod}}
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.unitCurrency}}
+            </td>
+            <td style="white-space: pre-wrap;">
+                {{header.dataPeriod | date : formatForReportingFreq(header.frequencePeriod)}}
+            </td>
+            <td style="white-space: pre-wrap;">
+              <span [class]="'report-status-label status-' + header.status.toLowerCase() ">{{header.status}}</span>
+              
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.updateBy}}
+            </td>
+            <td style="white-space: pre-wrap;">
+              {{header.updateDate | date: 'dd/MM/yyyy hh:mm'}}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">There are no data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+  
+    </nb-card-body>
+  </nb-card>
+  

@@ -1,0 +1,91 @@
+<nb-card>
+  <nb-card-header>{{'master.ljk.listtitle'| translate}}</nb-card-header>
+  <nb-card-body>
+
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton label="Add New" icon="pi pi-plus" class="p-button-raised p-mr-2" (click)="redirectNewLjkPage()"></button>
+      </ng-template>
+    </p-toolbar>
+
+    <p-table #dtTaxonomy [value]="listOfLJK" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+      styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [responsive]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} LJK">
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 65px;"></th>
+          <th pSortableColumn="code" style="width: 12rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="code"></p-sortIcon>
+              {{'master.ljk.code'| translate}}
+              <p-columnFilter type="text" field="code" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="name" style="width: 17rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="name"></p-sortIcon>
+              {{'master.ljk.name'| translate}}
+              <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="institutionType" style="width: 12rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="institutionType"></p-sortIcon>
+              {{'master.ljk.institutionType'| translate}}
+              <p-columnFilter type="text" field="institutionType" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="status" style="width: 8rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="status"></p-sortIcon>
+              {{'master.ljk.status'| translate}}
+              <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th style="width: 8rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              {{'master.ljk.updateBy'| translate}}
+            </div>
+          </th>
+          <th style="width: 8rem;">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              {{'master.ljk.updateDate'| translate}}
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-ljk>
+        <tr>
+          <td>
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-raised p-button-rounded p-button-warning p-mr-2" (click)="editLjkPage(ljk)"></button>
+        </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.code}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.name}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.institutionType}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.status}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.updateBy}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{ljk.updateDate | date: 'dd/MM/yyyy hh:mm'}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">There are no data found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </nb-card-body>
+</nb-card>

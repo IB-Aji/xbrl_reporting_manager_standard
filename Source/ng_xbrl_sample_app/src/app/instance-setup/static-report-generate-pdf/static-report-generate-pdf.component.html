@@ -1,0 +1,12 @@
+<div>
+    <p-listbox [options]="header.formList" [(ngModel)]="selectedForms" [metaKeySelection]="false" [checkbox]="true"
+        [filter]="true" [multiple]="true" optionLabel="description"
+        [listStyle]="{'height':'30em', 'font-size' : '0.8em'}">
+        <ng-template let-form pTemplate="item">
+            <div style="font-size: 0.8rem;">[{{ form.code }}] {{form.description}}</div>
+        </ng-template>
+    </p-listbox>
+    <button pButton label="Generate PDF" icon="pi pi-download" style="margin: 1em;"
+            class="p-button-raised p-button-success p-mr-1" (click)="generatePDFFile()"></button>
+    <app-loader></app-loader>
+</div>

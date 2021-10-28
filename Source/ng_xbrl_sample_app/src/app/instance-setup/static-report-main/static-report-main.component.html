@@ -1,0 +1,74 @@
+<nb-card style="height: 50rem;">
+    <nb-card-header>{{ "static-report.title" | translate }}</nb-card-header>
+    <nb-card-body name='static-report-body'>
+
+        <div class="p-grid">
+            <div #divSectionToolbar class="p-col-12">
+                <p-toolbar styleClass="p-mb-0" *ngIf="!isSubmittedButNotValidatedYet()">
+                    <ng-template pTemplate="left">
+                        <button pButton label="" icon="pi pi-arrow-left" class="p-button-raised p-mr-2"
+                            pTooltip="Back To list" (click)="backToList()"></button>
+                            
+                        <button pButton label="Save Form" icon="pi pi-save" (click)="saveForm()"
+                            class="p-button-raised p-button-success p-mr-1" *ngIf="isNotSubmittedYet()"></button>
+        
+                        <button pButton label="Template Excel" icon="pi pi-download" (click)="downloadExcelFile()"
+                            class="p-button-raised p-button-success p-mr-1"
+                            *ngIf="isNotSubmittedYet() || isValidated()"></button>
+        
+                        <button pButton label="Template Instance" icon="pi pi-download" (click)="downloadInstanceFile()"
+                            *ngIf="isNotSubmittedYet() || isValidated()" class="p-button-raised p-button-success p-mr-1"></button>
+                        
+                        <!-- <button pButton label="Generate PDF" icon="pi pi-download" (click)="generatePDFFile()"
+                            *ngIf="isNotSubmittedYet() || isValidated()" class="p-button-raised p-button-success p-mr-1"></button> -->
+                    </ng-template>
+                    <ng-template pTemplate="right">
+                        <p-fileUpload #instanceFileUpload mode="basic" class="p-mr-1" accept=".zip" customUpload="true"
+                            (uploadHandler)="uploadInstance($event, instanceFileUpload)" [auto]="true" chooseLabel="Upload Instance"
+                            *ngIf="isNotSubmittedYet()"></p-fileUpload>
+
+                        <p-fileUpload #excelFileUpload mode="basic" class="p-mr-1" accept=".zip" customUpload="true"
+                            (uploadHandler)="uploadExcel($event, excelFileUpload)" [auto]="true" chooseLabel="Upload Excel"
+                            *ngIf="isNotSubmittedYet()"></p-fileUpload>
+        
+                        <button pButton label="Submit Report" icon="pi pi-save" (click)="submitReport($event)"
+                            class="p-button-raised p-button-success p-mr-1" *ngIf="isNotSubmittedYet()"></button>
+                        
+                        <button pButton label="Correction" icon="pi pi-pencil" (click)="correctReport($event)"
+                            class="p-button-raised p-button-success p-mr-1" *ngIf="isCorrectableReportState()"></button>
+                    </ng-template>
+                </p-toolbar>
+            </div>
+            <div #divSectionValidationResult class="p-col-12">
+                <nb-accordion single *ngIf="isValidated()" style="border: 1px solid #dee2e6;">
+                    <nb-accordion-item (collapsedChange)="onValidationResultCollapsedChange($event)" [collapsed]="false">
+                      <nb-accordion-item-header class="p-p-1 p-m-1">
+                        Validation Error
+                      </nb-accordion-item-header>
+                      <nb-accordion-item-body>
+                        <app-static-report-error-list [headerId]="header.id" (onErrorIdDblClicked)="onErrorIdDblClicked($event)"></app-static-report-error-list>
+                      </nb-accordion-item-body>
+                    </nb-accordion-item>
+                </nb-accordion>
+            </div>
+            <div #divSectionForm class="p-col-12" style="overflow: auto;">
+                <div class="p-grid p-mt-1 form-container">
+                    <div class="p-col-fixed" style="width:8rem">
+                        <p-listbox (onChange)="onChangeForm()" [options]="header.formList" [(ngModel)]="selectedForm"
+                            optionLabel="code" [style]="{'width':'7rem'}"></p-listbox>
+                    </div>
+                    <form class="p-col" #formElement name="webForm"></form>
+                </div>
+            </div>
+        </div>
+
+        <p-messages severity="info" *ngIf="isSubmittedButNotValidatedYet()">
+            <ng-template pTemplate>
+                <div>Report Submission is waiting for validation process.</div>
+            </ng-template>
+        </p-messages>
+
+        <app-loader></app-loader>
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    </nb-card-body>
+</nb-card>

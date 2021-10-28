@@ -1,0 +1,71 @@
+<div class="p-grid">
+    <div class="p-col">
+
+        <!-- class="p-mr-0 p-ml-0 p-mt-0 p-mb-0" -->
+        <p-table [value]="validationErrorItems" dataKey="id" [rows]="rows" 
+            styleClass="p-datatable-sm" [paginator]="true"
+            selectionMode="single" [(selection)]="selectedError"
+            (onRowSelect)="onRowSelect()"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Errors">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="validatorName" style="width: 10%;">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="validatorName"></p-sortIcon>
+                            Validation Name
+                            <p-columnFilter type="date" field="validatorName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="errorType" style="width: 5%;">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="errorType"></p-sortIcon>
+                            Type
+                            <p-columnFilter type="text" field="errorType" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="code" style="width: 15%;">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="code"></p-sortIcon>
+                            Error Code
+                            <p-columnFilter type="text" field="code" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="message" pResizableColumn style="width: 50%;">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="message"></p-sortIcon>
+                            Message
+                            <p-columnFilter type="text" field="message" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-errorItem>
+                <tr [pSelectableRow]="errorItem">
+                    <td style="white-space: pre-wrap;">
+                        {{errorItem.validatorName}}
+                    </td>
+                    <td style="white-space: pre-wrap;">
+                        {{errorItem.errorType}}
+                    </td>
+                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {{errorItem.code}}
+                    </td>
+                    <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {{errorItem.message }}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="6">There are no data found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <div class="p-col-fixed" style="width:15rem">
+        <span style="padding-bottom: 10px; font-weight: bold;">Error Identifiers :</span>
+        <p-listbox [options]="currentErrorIds" [style]="{'width':'auto', 'height' : '100%'}" (onDblClick)="focusToErrorId($event)" ></p-listbox>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<nb-layout>
+  <nb-layout-column style="padding: unset;">
+    <div class="container-fluid">
+      <div class="row">
+        <app-loader></app-loader>
+        <div class="col-xl-8 col-lg-6 col-md-5 col-sm-4 px-0 d-none d-sm-block">
+          <img src="assets/images/login.jpg" alt="login image" class="login-img">
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-7 col-sm-8 login-section-wrapper">
+          <div class="brand-wrapper">
+            <img src="assets/images/logo.png" alt="logo" class="logo">
+          </div>
+          <div class="info-wrapper">
+            <!-- <div class="login-info" style="margin-bottom: 15px;">FUJITSU XBRL Reporting</div> -->
+            <div class="login-info">XBRL Reporting Manager</div>
+            <!-- <div class="login-info">XBRL Reporting Manager Regulator</div> -->
+          </div>
+          <div class="login-wrapper my-auto">
+            <h1 class="login-title">Login</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+              <div class="wrap-input100 validate-input">
+                <input id="user" type="text" class="input100" formControlName="username"
+                  [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                <span class="focus-input100" data-placeholder="Email"></span>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                  <div *ngIf="f.username.errors.required">Email is required</div>
+                </div>
+              </div>
+
+              <div class="wrap-input100 validate-input" data-validate="Enter password">
+                <span class="btn-show-pass">
+                  <i>
+                    <nb-icon [icon]="passIcon" (click)="iconClick()"></nb-icon>
+                  </i>
+                </span>
+                <input id="pass" type="password" formControlName="password" class="input100"
+                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <span class="focus-input100" data-placeholder="Password"></span>
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                  <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+
+              <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn" type="submit">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="footer-info">Copyright 2020 FUJITSU LIMITED</div>
+        </div>
+      </div>
+    </div>
+
+  </nb-layout-column>
+</nb-layout>

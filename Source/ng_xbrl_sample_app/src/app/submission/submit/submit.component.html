@@ -1,0 +1,67 @@
+<nb-card size="giant">
+  <nb-card-header>{{ "submission.submit.title" | translate }}</nb-card-header>
+  <nb-card-body>
+
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton label="Submit" [disabled]="disableSubmit" icon="pi pi-save" class="p-button-raised p-button-success p-mr-2"
+          (click)="onSubmit()"></button>
+      </ng-template>
+    </p-toolbar>
+
+    <div class="p-field">
+      <div class="form-group form-group-sm col-sm-12">
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="institution"
+            class="col-sm-2 col-form-label form-label">{{'submission.submit.institution'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfInstitution" [(ngModel)]="selectedInstitutionCode" optionLabel="value"
+              optionValue="code" placeholder="Select a Institution" [disabled]="true">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="taxonomy" class="col-sm-2 col-form-label form-label">{{'submission.submit.taxonomy'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfTaxonomy" [(ngModel)]="selectedTaxonomy" optionLabel="releaseDate" optionValue="id"
+              placeholder="Select a Taxonomy Release">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="sector" class="col-sm-2 col-form-label form-label">{{'submission.submit.sector'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfSector" [(ngModel)]="selectedSectorCode" optionLabel="value" optionValue="code"
+              placeholder="Select a Sector">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="frequency" class="col-sm-2 col-form-label form-label">{{'submission.submit.frequency'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfFrequency" [(ngModel)]="selectedFrequencyCode" optionLabel="value"
+              optionValue="code" (onChange)="onChangeFrequency($event)" placeholder="Select a Frequency Reporting">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="period" class="col-sm-2 col-form-label form-label">{{'submission.submit.dataPeriod'| translate}}</label>
+          <div class="col-sm-10">
+            <p-calendar [(ngModel)]="dataPeriod" [dateFormat]="periodFormat" [showIcon]="true" inputId="icon">
+            </p-calendar>
+          </div>
+        </div>
+        <div class="row form-group">
+          <label for="file" class="col-sm-2 col-form-label form-label">{{'submission.submit.file'| translate}}</label>
+          <div class="col-sm-10" style="align-self: center;">
+            <input type="file" accept=".zip" name="avatar" (change)="onSelect($event)" placeholder="Upload File"
+              id="upload" name="upload">
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 50px;"></div>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>

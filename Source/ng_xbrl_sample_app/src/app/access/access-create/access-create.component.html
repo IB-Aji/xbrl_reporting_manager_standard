@@ -1,0 +1,64 @@
+<nb-card>
+    <nb-card-header>Access Create Form</nb-card-header>
+    <nb-card-body>
+        <p-toolbar styleClass="p-mb-4">
+            <ng-template pTemplate="left">
+                <button pButton label="Submit" pTooltip="Submit to Proceed" tooltipPosition="bottom" icon="pi pi-save"
+                    class="p-button-raised p-mr-2" [disabled]="!accessForm.valid"
+                    (click)="submitAccessForm($event)"></button>
+                <button pButton label="Cancel" pTooltip="Cancel and Back" icon="pi pi-times"
+                    class="p-button-raised p-button-warning p-mr-2" (click)="redirectAccessPage()"></button>
+            </ng-template>
+        </p-toolbar>
+
+        <p-confirmPopup></p-confirmPopup>
+
+        <div style="line-height:1.5">
+            <form class="form-horizontal" novalidate [formGroup]="accessForm" (ngSubmit)="onSubmit()">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group form-group-sm col-sm-12">
+                            <div class="row">
+                                <label for="name" class="col-sm-3 col-form-label">Access Name</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        formControlName="name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm col-sm-12">
+                            <div class="row">
+                                <label for="description" class="col-sm-3 col-form-label">Description</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="description" name="description"
+                                        formControlName="description">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm col-sm-12">
+                            <div class="row">
+                                <label for="path" class="col-sm-3 col-form-label">Path</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="path" name="path"
+                                        formControlName="path">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm col-sm-12">
+                            <div class="row">
+                                <label for="type" class="col-sm-3 col-form-label">Type</label>
+                                <div class="col-sm-9">
+                                    <nb-select placeholder="Type Select" formControlName="type">
+                                        <nb-option *ngFor="let item of typeOption;" value={{item.value}}>
+                                            {{item.label}}
+                                        </nb-option>
+                                    </nb-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </nb-card-body>
+</nb-card>

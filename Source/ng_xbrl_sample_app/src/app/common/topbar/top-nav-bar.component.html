@@ -1,0 +1,16 @@
+<div class="header-container">
+    <div class="logo-container">
+        <!-- <img class="topbar-logo" href="#" (click)="navigateHome()" src="assets/images/xbrl_logo.png" width="60%" height="60%"> -->
+        <img class="topbar-logo" href="#" (click)="navigateHome()" src="assets/images/xbrl.png" width="60%" height="60%">
+    </div>
+</div>
+
+<div class="header-container">
+    <nb-actions size="small">
+        <nb-action class="control-item">
+        </nb-action>
+        <nb-action class="user-action">
+            <nb-user [onlyPicture]="userPictureOnly" [name]="user?.firstName + ' ' +user?.lastName" [title]="title" [picture]="user?.avatar" style="text-transform: capitalize"></nb-user>
+        </nb-action>
+    </nb-actions>
+</div>

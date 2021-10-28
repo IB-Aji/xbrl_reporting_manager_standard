@@ -1,0 +1,53 @@
+@import "~@nebular/theme/styles/theming";
+@import "~@nebular/theme/styles/themes/default";
+@import "~@nebular/theme/styles/themes/dark";
+
+$nb-themes: nb-register-theme(
+  (
+    font-family-primary: (
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      "Helvetica Neue",
+      Arial,
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+    ),
+    text-primary-color: #4c566a,
+    menu-item-divider-color: transparent,
+    menu-group-text-color: #9e1e21,
+    menu-text-font-weight: 500,
+    // menu-text-color: #ffffff,
+    // menu-item-icon-color: #ffffff,
+    user-name-text-color: #ffffff,
+    user-title-text-color: #ffffff,
+    user-picture-box-background-color: #ffffff,
+    card-divider-width: 4px,
+    card-divider-color: #e60012,
+    card-scrollbar-color: #c1c1c1,
+    card-scrollbar-width: 0.8rem,
+    sidebar-scrollbar-color: #c1c1c1,
+    sidebar-scrollbar-width: 0.7rem,
+    card-text-line-height: 1rem,
+    card-text-font-size: 0.875rem,
+    text-button-large-font-size: 0.8rem,
+    list-item-font-size: 0.875rem,
+    // card-header-primary-background-color: #e60012,
+    // card-header-primary-text-color: #000000
+    // context-menu-background-color: #0d2e6b,,,,,,,,,,,,,,
+  ),
+  default,
+  default
+);
+$nb-themes: nb-register-theme(
+  (
+    menu-item-divider-color: transparent,
+    menu-group-text-color: #f8f8f8,
+    menu-item-icon-color: #ffffff,
+  ),
+  dark,
+  dark
+);

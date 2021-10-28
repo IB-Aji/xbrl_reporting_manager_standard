@@ -1,0 +1,57 @@
+<div class="footer-copyright">
+  Copyright 2020 FUJITSU LIMITED
+</div>
+<div style="float: right;">
+  <p-button pTooltip="About Application" tooltipPosition="top" styleClass="p-button-link" (click)="viewAbout()"
+    style="padding: unset;">
+    <i class="pi pi-question-circle icon-about"></i>
+  </p-button>
+</div>
+
+<p-dialog header="About Application" [modal]="true" [(visible)]="aboutDialog" [style]="{width: '500px'}">
+  <div class="footer-info">
+
+    <div class="row">
+      <i class="pi pi-info-circle" style="font-size: 1.3rem; color: #2196F3; padding: 0.5rem;"></i>
+      <div class="about-info" style="margin-top: 8px; font-weight: 600;">
+        XBRL Reporting Manager
+        <!-- XBRL Reporting Manager Regulator -->
+      </div>
+    </div>
+
+    <div class="about-info" style="margin-top: 10px;">
+      Version : v3.0.0 (reporter)
+      <!-- Version : v3.0.0 (regulator) -->
+    </div>
+    <div class="about-info">
+      Copyright 2020 FUJITSU LIMITED
+    </div>
+
+    <div class="about-info" style="margin-top: 15px; font-weight: 700;">
+     Contact:
+    </div>
+    <div class="row">
+      <img src="assets/images/icon-telephone.gif" height="13px" style="margin-top: 5px;">
+      <div class="about-info" style="margin-left: 10px;">
+        Tel: +62 21 570 9330
+      </div>
+    </div>
+    <div class="row">
+      <img src="assets/images/icon-fax.gif" height="13px" style="margin-top: 5px;">
+      <div class="about-info" style="margin-left: 10px;">
+        Fax: +62 (21) 573 5150
+      </div>
+    </div>
+    <div class="row">
+      <img src="assets/images/icon-mail.gif" height="13px" style="margin-top: 5px;">
+      <div class="about-info" style="margin-left: 10px;">
+        xbrl.support@com.fujitsu.core.server.excelvalidation
+      </div>
+    </div>
+    <div class="row">
+      <div class="about-info">
+        Address: Wisma Keiai 10th Floor Jl. Jend. Sudirman Kav 3 Jakarta 10220 Indonesia
+      </div>
+    </div>
+  </div>
+</p-dialog>

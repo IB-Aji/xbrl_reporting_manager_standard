@@ -1,0 +1,58 @@
+.report-status-label {
+    border-radius: 2px;
+    padding: .25em .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .3px;
+}
+
+.status-not_submitted_yet {
+    background: #d6dbd6;
+    color: #4b524b;
+}
+
+.status-not_processed_yet {
+    background: #c8e6c9;
+    color: #256029;
+}
+
+.status-creation_in_progress {
+    background: #e3e6c8;
+    color: #605f25;
+}
+
+.status-creation_failed {
+    background: #dac0bf;
+    color: #cc3030;
+}
+
+.status-creation_success {
+    background: #9cce9d;
+    color: #0e7016;
+}
+
+.status-validation_in_progress {
+    background: #e3e6c8;
+    color: #605f25;
+}
+
+.status-validation_failed {
+    background: #dac0bf;
+    color: #cc3030;
+}
+
+.status-validation_failed_email_sent {
+    background: #dac0bf;
+    color: #cc3030;
+}
+
+.status-validation_success {
+    background: #a8cce7;
+    color: #254d60;
+}
+
+.status-validation_success_emeil_sent {
+    background: #a8cce7;
+    color: #254d60;
+}

@@ -1,0 +1,95 @@
+<nb-card size="giant">
+  <nb-card-header>{{ "static-report.title" | translate }}</nb-card-header>
+  <nb-card-body>
+
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton label="" icon="pi pi-arrow-left" class="p-button-raised p-mr-2" pTooltip="Back To list"
+          (click)="backToList()"></button>
+          
+        <button pButton label="Submit" [disabled]="disableSubmit" icon="pi pi-save"
+          class="p-button-raised p-button-success p-mr-2" (click)="onSubmit()"></button>
+      </ng-template>
+    </p-toolbar>
+
+    <app-loader></app-loader>
+    <div class="p-field">
+      <div class="form-group form-group-sm col-sm-12">
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="institution" class="col-sm-2 col-form-label form-label">{{'submission.submit.institution'|
+            translate}}</label>
+          <div class="col-sm-5">
+            <p-dropdown [options]="listOfInstitution" [(ngModel)]="selectedInstitutionCode" optionLabel="value"
+              optionValue="code" placeholder="Select a Institution" [disabled]="true">
+            </p-dropdown>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="taxonomy" class="col-sm-2 col-form-label form-label">{{'submission.submit.taxonomy'|
+            translate}}</label>
+          <div class="col-sm-5">
+            <p-dropdown [options]="listOfTaxonomy" [(ngModel)]="selectedTaxonomy" optionLabel="releaseDate"
+              optionValue="id" placeholder="Select a Taxonomy Release">
+            </p-dropdown>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="sector" class="col-sm-2 col-form-label form-label">{{'submission.submit.sector'|
+            translate}}</label>
+          <div class="col-sm-5">
+            <p-dropdown [options]="listOfSector" [(ngModel)]="selectedSectorCode" optionLabel="value" optionValue="code"
+              placeholder="Select a Sector">
+            </p-dropdown>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="frequency" class="col-sm-2 col-form-label form-label">{{'submission.submit.frequency'|
+            translate}}</label>
+          <div class="col-sm-5">
+            <p-dropdown [options]="listOfFrequency" [(ngModel)]="selectedFrequencyCode" optionLabel="value"
+              optionValue="code" (onChange)="onChangeFrequency($event)" placeholder="Select a Frequency Reporting">
+            </p-dropdown>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="frequency" class="col-sm-2 col-form-label form-label">Unit Currency</label>
+          <div class="col-sm-5">
+            <p-dropdown [options]="listOfUnitCurrency" [(ngModel)]="selectedUnitCurrencyCode" optionLabel="value"
+              optionValue="code" placeholder="Select a Unit Currency">
+            </p-dropdown>
+          </div>
+          <div class="col-sm-5"></div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="period" class="col-sm-2 col-form-label form-label">{{'submission.submit.dataPeriod'|
+            translate}}</label>
+          <div class="col-sm-2">
+            <p-calendar [(ngModel)]="dataPeriod" [showIcon]="true" inputId="icon">
+            </p-calendar>
+          </div>
+          <div class="col-sm-8">
+            <button pButton label="Get Forms" [disabled]="disableGetForms" icon="pi pi-list"
+              class="p-button-raised p-button-success p-mr-2" (click)="onGetForms()"></button>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 10px;"></div>
+      </div>
+
+      <div *ngIf="header.entrypoint">
+        <p-listbox [options]="header.formList" [(ngModel)]="selectedForms" [metaKeySelection]="false"
+          [checkbox]="true" [filter]="true" [multiple]="true" optionLabel="description" [listStyle]="{'max-height':'20em', 'font-size' : '0.8em'}">
+          <ng-template let-form pTemplate="item">
+            <div style="font-size: 0.8rem;">[{{ form.code }}] {{form.description}}</div>
+          </ng-template>
+        </p-listbox>
+      </div>
+
+    </div>
+
+  </nb-card-body>
+</nb-card>

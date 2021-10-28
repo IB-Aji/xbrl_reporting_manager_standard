@@ -1,0 +1,19 @@
+td {
+  margin: 0px !important;
+  padding: 0.25rem !important;
+}
+
+th {
+  margin: 0px !important;
+  padding: 0rem !important;
+  line-height: 0px;
+}
+
+div.p-paginator {
+  padding: 0rem !important;
+}
+
+p-listbox li {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+}

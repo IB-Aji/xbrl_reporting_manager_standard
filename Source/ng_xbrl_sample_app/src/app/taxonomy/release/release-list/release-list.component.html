@@ -1,0 +1,97 @@
+<nb-card>
+  <nb-card-header>{{'taxonomy.upload.listtitle'| translate}}</nb-card-header>
+  <nb-card-body>
+
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton label="Add New" icon="pi pi-plus" class="p-button-raised p-mr-2"
+          pTooltip="Add New Taxonomy Release" (click)="redirectNewTaxonomyReleasePage()"></button>
+      </ng-template>
+    </p-toolbar>
+
+    <p-table #dtTaxonomy [value]="taxonomyReleases" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+      styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [resizableColumns]="true" [responsive]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Taxonomy Release">
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="width: 65px;"></th>
+          <th pSortableColumn="releaseDate">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="releaseDate"></p-sortIcon>
+              {{'taxonomy.upload.date'| translate}}
+              <p-columnFilter type="date" field="releaseDate" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="version" pResizableColumn>
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="version"></p-sortIcon>
+              {{'taxonomy.upload.version'| translate}}
+              <p-columnFilter type="text" field="version" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="description">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="description"></p-sortIcon>
+              {{'taxonomy.upload.desc'| translate}}
+              <p-columnFilter type="text" field="description" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="status">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="status"></p-sortIcon>
+              {{'taxonomy.upload.status'| translate}}
+              <p-columnFilter type="text" field="status" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="updateBy">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="updateBy"></p-sortIcon>
+              {{'taxonomy.upload.updateBy'| translate}}
+              <p-columnFilter type="text" field="updateBy" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th pSortableColumn="updateDate">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="updateDate"></p-sortIcon>
+              {{'taxonomy.upload.updateDate'| translate}}
+              <p-columnFilter type="date" field="updateDate" display="menu"></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-taxonomy>
+        <tr>
+          <td>
+            <button pButton pRipple icon="pi pi-pencil" class="p-button-raised p-button-rounded p-button-warning p-mr-2"
+              pTooltip="Edit Taxonomy Release" (click)="editTaxonomyReleasePage(taxonomy)"></button>
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.releaseDate | date: 'dd/MM/yyyy'}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.version}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.description}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.status}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.updateBy}}
+          </td>
+          <td style="white-space: pre-wrap;">
+            {{taxonomy.updateDate | date: 'dd/MM/yyyy hh:mm'}}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">There are no data found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+
+  </nb-card-body>
+</nb-card>

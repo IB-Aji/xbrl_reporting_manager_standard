@@ -1,0 +1,134 @@
+{
+  "menu": {
+    "home": {
+      "group": "Home",
+      "dashboard": "Dashboard"
+    },
+    "master": {
+      "group": "Data Master",
+      "ljk": "Lembaga Jasa Keuangan",
+      "location": "Daftar Area",
+      "userrole": "User & Role",
+      "user": "User",
+      "role": "Role",
+      "access": "Access List",
+      "masterparam": "Master Parameter",
+      "parameter": "Parameter"
+    },
+    "taxonomy": {
+      "group": "Pengaturan Taxonomi",
+      "upload": "Taxonomi Upload",
+      "taxoSetup": "Persiapan Master Taxonomi",
+      "taxoMapping": "Pemetaan Taxonomi"
+    },
+    "instance": {
+      "group": "Instance",
+      "create": "Pembuatan Instance",
+      "validation": "Validasi Instance",
+      "compress": "Kompres Instance"
+    },
+    "submission": {
+      "group": "Pelaporan",
+      "submit": "Kirim Laporan",
+      "monitoring": "Pemantauan Laporan"
+    },
+    "monitoring": {
+      "group": "Pemantauan Laporan",
+      "instance": "Pemantauan Instance"
+    }
+  },
+  "master": {
+    "ljk": {
+      "listtitle": "Daftar Lembaga Jasa Keuangan",
+      "formtitle": "Informasi Lembaga Jasa Keuangan",
+      "name": "Nama LJK",
+      "code": "Kode LJK",
+      "institutionType": "Jenis Institusi"
+    },
+    "area": {
+      "listtitle": "Daftar Area",
+      "formtitle": "Informasi Area",
+      "name": "Nama Area",
+      "code": "Kode Area",
+      "level": "Level Area",
+      "parent": "Induk Area",
+      "point": "Lokasi Area"
+    },
+    "user": {
+      "listtitle": "Daftar Pengguna",
+      "formtitle": "Informasi Pengguna",
+      "firstName": "Nama Depan",
+      "lastName": "Nama Belakang",
+      "email": "Email",
+      "password": "Kata Sandi",
+      "retypepassword": "Ketik Ulang Kata Sandi",
+      "role": "Wewenang",
+      "userType": "Tipe Pengguna",
+      "institutionType": "Tipe Institusi",
+      "ljk": "Nama LJK",
+      "selectrole": "Pilih Wewenang",
+      "selectuserType": "Pilih Tipe Pengguna",
+      "selectinstitutionType": "Pilih Tipe Institusi",
+      "selectljk": "Pilih LJK"
+    },
+    "role": {
+      "listtitle": "Daftar Wewenang",
+      "formtitle": "Detail Wewenang",
+      "name": "Nama Wewenang"
+    },
+    "access": {
+      "listtitle": "Daftar Akses",
+      "formtitle": "Detail Akses",
+      "name": "Nama Akses"
+    },
+    "parameter": {
+      "listtitle": "Daftar Parameter",
+      "formtitle": "Informasi Parameter",
+      "type": "Tipe Parameter",
+      "selecttype": "Pilih Tipe Parameter",
+      "code": "Kode Parameter",
+      "value": "Nilai Parameter",
+      "desc": "Keterangan"
+    }
+  },
+  "taxonomy": {
+    "upload": {
+      "listtitle": "Daftar Taxonomi",
+      "formtitle": "Detail Taxonomi Upload",
+      "file": "File Taxonomi",
+      "date": "Tanggal Rilis",
+      "version": "Versi"
+    },
+    "taxoSetup": {
+      "listtitle": "Daftar Master Taxonomi",
+      "formtitle": "Detail Master Taxonomi"
+    },
+    "taxoMapping": {
+      "listtitle": "Daftar Pemetaan Taxonomi",
+      "formtitle": "Detail Pemetaan Taxonomi"
+    }
+  },
+  "submission": {
+    "submit":{
+      "title": "Kirim Instance Pelaporan",
+      "invalidExt": "Ekstensi file tidak tepat. Hanya menerima (.zip)",
+      "successUpload": "File instance berhasil dikirim"
+    },
+    "monitoring":{
+      "title": "Pemantauan Instance Pelaporan",
+      "code": "Kode LJK",
+      "name": "Nama LJK",
+      "period": "Period Pelaporan",
+      "senddate": "Tanggal Kirim",
+      "validatedate": "Tanggal Validasi",
+      "lastsendstatus": "Status Kirim",
+      "lastvalidatestatus": "Status Validasi",
+      "totalsent": "Total Kirim",
+      "totalvalidate": "Total Validasi",
+      "first": "Pertama",
+      "last": "Terakhir",
+      "deadlinedate": "Batas Waktu Pelaporan",
+      "totaloverdeadline": "Jumlah Hari Terlambat"
+    }
+  }
+}

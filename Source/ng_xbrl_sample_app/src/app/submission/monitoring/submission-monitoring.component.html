@@ -1,0 +1,574 @@
+<nb-card>
+  <nb-card-header>{{'submission.monitoring.title'| translate}}</nb-card-header>
+  <nb-card-body>
+
+    <app-loader></app-loader>
+    <div class="p-field">
+      <div class="form-group form-group-sm col-sm-12">
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="taxonomy"
+            class="col-sm-2 col-form-label form-label">{{'submission.monitoring.taxonomy'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfTaxonomy" [(ngModel)]="selectedTaxonomy" optionLabel="releaseDate"
+              placeholder="Select a Taxonomy Release">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="institution"
+            class="col-sm-2 col-form-label form-label">{{'submission.monitoring.institution'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfInstitution" [(ngModel)]="selectedInstitutionCode" optionLabel="value"
+              optionValue="code" placeholder="Select a Institution">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="sector"
+            class="col-sm-2 col-form-label form-label">{{'submission.monitoring.sector'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfSector" [(ngModel)]="selectedSectorCode" optionLabel="value" optionValue="code"
+              placeholder="Select a Sector">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 0.4rem;">
+          <label for="frequency"
+            class="col-sm-2 col-form-label form-label">{{'submission.monitoring.frequency'| translate}}</label>
+          <div class="col-sm-10">
+            <p-dropdown [options]="listOfFrequency" [(ngModel)]="selectedFrequencyCode" optionLabel="value"
+              optionValue="code" placeholder="Select a Frequency Reporting">
+            </p-dropdown>
+          </div>
+        </div>
+        <div class="row form-group" style="margin-bottom: 0.4rem;">
+          <label for="period"
+            class="col-sm-2 col-form-label form-label">{{'submission.monitoring.dataPeriod'| translate}}</label>
+          <div class="col-sm-10">
+            <p-calendar [(ngModel)]="dataPeriod" [dateFormat]="periodFormat" [showIcon]="true" inputId="icon">
+            </p-calendar>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-sm-2">
+          </div>
+          <div class="col-sm-10">
+            <button pButton type="button" icon="pi pi-search" iconPos="left" label="Search" class="p-button-raised "
+              (click)="searchData($event)"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p-table #dtSubmission [value]="listOfSummary" dataKey="ljkCode" [rows]="10"
+      styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true" [scrollable]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Institutions"
+      [showCurrentPageReport]="true" [style]="{width:'100%'}">
+
+      <ng-template pTemplate="colgroup" let-columns>
+        <colgroup>
+          <col style="width:3rem">
+          <col style="width:8rem">
+          <col style="width:25rem">
+          <col style="width:10rem">
+          <col style="width:8rem">
+          <col style="width:14rem">
+          <col style="width:8rem">
+          <col style="width:8rem">
+          <col style="width:8rem">
+          <col style="width:8rem">
+          <col style="width:8rem">
+          <col style="width:10rem">
+        </colgroup>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+          <th rowspan="2"></th>
+          <th rowspan="2" pSortableColumn="ljkCode">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="ljkCode"></p-sortIcon>
+              LJK Code
+              <p-columnFilter type="text" field="ljkCode" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th rowspan="2" pSortableColumn="ljkName">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="ljkName"></p-sortIcon>
+              LJK Name
+              <p-columnFilter type="text" field="ljkName" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th rowspan="2" pSortableColumn="dataPeriod">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="dataPeriod"></p-sortIcon>
+              Data Period
+              <p-columnFilter type="text" field="dataPeriod" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th rowspan="2">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              Total Form
+            </div>
+          </th>
+          <th rowspan="2" pSortableColumn="reportingStatus">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="reportingStatus"></p-sortIcon>
+              Reporting Status
+              <p-columnFilter type="text" field="reportingStatus" display="menu"></p-columnFilter>
+            </div>
+          </th>
+          <th colspan="2">
+            <div style="text-align: center;">
+              Submit Date
+            </div>
+          </th>
+          <th rowspan="2">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              Total Submit
+            </div>
+          </th>
+          <th colspan="2">
+            <div style="text-align: center;">
+              Validation Process
+            </div>
+          </th>
+          <th rowspan="2" pSortableColumn="validationStatus">
+            <div class="p-d-flex p-jc-between p-ai-center">
+              <p-sortIcon field="validationStatus"></p-sortIcon>
+              Latest Validation Status
+              <p-columnFilter type="text" field="validationStatus" display="menu"></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th>First</th>
+          <th>Last</th>
+          <th>First</th>
+          <th>Last</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-summary let-expandSummary="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="summary"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expandSummary ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{summary.ljkCode}}</td>
+          <td>{{summary.ljkName}}</td>
+          <td>{{summary.dataPeriod | date: periodTableFormat}}</td>
+          <td>{{summary.totalForm}}</td>
+          <td>
+            <span [class]="'status-badge status-' + summary.reportingStatusStyle">{{summary.reportingStatus}}</span>
+          </td>
+          <td>{{summary.firstSentDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>{{summary.lastSentDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>{{summary.totalSubmit}}</td>
+          <td>{{summary.firstValidationDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>{{summary.lastValidationDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>
+            <span [class]="'status-badge status-' + summary.validationStatusStyle">{{summary.validationStatus}}</span>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="rowexpansion" let-summary>
+        <tr>
+          <td colspan="12">
+            <div class="p-p-3">
+              <p-table [value]="summary.listOfSubmission" dataKey="id" [rows]="10" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Submission"
+                [showCurrentPageReport]="true" [scrollable]="true" [style]="{width:'90rem'}">
+
+                <ng-template pTemplate="colgroup" let-columns>
+                  <colgroup>
+                    <col style="width: 3rem">
+                    <col style="width: 10rem">
+                    <col style="width: 25rem">
+                    <col style="width: 10rem">
+                    <col style="width: 10rem">
+                    <col style="width: 12rem">
+                    <col style="width: 10rem">
+                    <col style="width: 10rem">
+                  </colgroup>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+        <tr>
+          <th></th>
+          <th>Submit Date</th>
+          <th>Reporter</th>
+          <th>Start Validation</th>
+          <th>End Validation</th>
+          <th>Validation Status</th>
+          <th>Total Valid Forms</th>
+          <th>Submit Method</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-submission let-expandSubmission="expanded">
+        <tr>
+          <td>
+            <button type="button" pButton pRipple [pRowToggler]="submission"
+              class="p-button-text p-button-rounded p-button-plain"
+              [icon]="expandSubmission ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+          </td>
+          <td>{{submission.createDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>{{submission.createBy}}</td>
+          <td>{{submission.startValidation | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>{{submission.endValidation | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>
+            <span [class]="'status-badge status-' + submission.statusStyle">{{submission.status}}</span>
+          </td>
+          <td>{{submission.totalValid}} of {{summary.totalForm}}</td>
+          <td>{{submission.submitMethod}}</td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="rowexpansion" let-submission>
+        <tr>
+          <td colspan="7">
+            <div class="p-p-3">
+              <p-table [value]="submission.listOfProcInst" dataKey="formId" [rows]="10" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} Taxonomy Forms"
+                [showCurrentPageReport]="true" [scrollable]="true" [style]="{width:'70rem'}">
+
+                <ng-template pTemplate="colgroup" let-columns>
+                  <colgroup>
+                    <col style="width: 5rem">
+                    <col style="width: 45rem">
+                    <col style="width: 8rem">
+                    <col style="width: 8rem">
+                    <col style="width: 4rem">
+                  </colgroup>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+        <tr>
+          <th>Process Id</th>
+          <th>Form Name</th>
+          <th>Validation Date</th>
+          <th>Validation Status</th>
+          <th></th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-instance>
+        <tr>
+          <td>{{instance.processId}}</td>
+          <td>{{instance.formName}}</td>
+          <td>{{instance.validationCreateDate | date: 'dd/MM/yyyy hh:mm'}}</td>
+          <td>
+            <p-button styleClass="p-button-link" (click)="viewLogHeader(instance.processId)">
+              <span
+                [class]="'status-badge status-' + instance.validationStatusStyle">{{instance.validationStatus}}</span>
+            </p-button>
+          </td>
+          <td>
+            <button pButton pRipple icon="pi pi-search" class="p-button-rounded p-button-warning p-mr-2"
+              (click)="viewDetail(instance.processId, instance.instanceFile)">
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">There are no details for this Submission.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">There are no details for this LJK.</td>
+      </tr>
+    </ng-template>
+    </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="12">There are no data found.</td>
+      </tr>
+    </ng-template>
+    </p-table>
+
+    <br />
+
+    <div class="row" style="margin-bottom: 80px;"></div>
+
+    <p-dialog header="Log Header" [modal]="true" [(visible)]="dlgLogHeader" [style]="{width: '600px'}" [baseZIndex]="10000">
+      <div class="row" style="margin-bottom: 0.4rem; margin-top: 1rem">
+        <p-table #dtLogHeader [value]="logsHeader" dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm"
+          [responsive]="true">
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 30px;"></th>
+              <th style="width: 200px;">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                  Error Type
+                </div>
+              </th>
+              <th style="width: 100px;">
+                <div class="p-d-flex p-jc-between p-ai-center">
+                  Total Error
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-header>
+            <tr>
+              <td>
+                <button pButton pRipple type="button" icon="pi pi-search" class="p-button-rounded"
+                  (click)="viewLogDetail(header)"></button>
+              </td>
+              <td style="white-space: pre-wrap;">
+                {{header.validationType}}
+              </td>
+              <td style="white-space: pre-wrap;">
+                {{header.totalError}}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="3">There are no info found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-dialog>
+
+    <p-dialog header="Log Details" [modal]="true" [(visible)]="dlgLogDetail" [style]="{width: '80%'}" [baseZIndex]="10000">
+      <p-toolbar styleClass="p-mb-4">
+          <ng-template pTemplate="left">
+              <button pButton label="Back" pTooltip="Back to Logs Header" icon="pi pi-times"
+                  class="p-button-raised p-button-warning p-mr-2" (click)="backLogHeader()"></button>
+          </ng-template>
+      </p-toolbar>
+      <div class="row" style="margin-bottom: 0.4rem; margin-top: 1rem">
+        <p-table #dtLogDetail [value]="logsDetail" dataKey="id" styleClass="p-datatable-gridlines p-datatable-sm"
+          [responsive]="true">
+
+          <ng-template pTemplate="header">
+            <tr>
+              <th>
+                <div class="p-d-flex p-jc-between p-ai-center">
+                  Message Info
+                </div>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-detail>
+            <tr>
+              <td style="white-space: pre-wrap;">
+                {{detail.message}}
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+              <td colspan="1">There are no info found.</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </p-dialog>
+
+    <p-dialog [(visible)]="customerDialog" header="List Of Customer" [style]="{width: '1500px'}" [modal]="true">
+      <p-table [value]="listOfCustomer" dataKey="Id" [scrollable]="true" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="cifNumber">
+              {{ "instance.viewer.customer.cifno" | translate }}
+              <p-sortIcon field="cifNumber"></p-sortIcon>
+            </th>
+            <th pSortableColumn="idType">
+              {{ "instance.viewer.customer.idtype" | translate }}
+              <p-sortIcon field="idType"></p-sortIcon>
+            </th>
+            <th pSortableColumn="idNumber">
+              {{ "instance.viewer.customer.idno" | translate }}
+              <p-sortIcon field="idNumber"></p-sortIcon>
+            </th>
+            <th pSortableColumn="customerName">
+              {{ "instance.viewer.customer.name" | translate }}
+              <p-sortIcon field="customerName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="npwp">
+              {{ "instance.viewer.customer.npwp" | translate }}
+              <p-sortIcon field="npwp"></p-sortIcon>
+            </th>
+            <th pSortableColumn="yearlyGrossIncome">
+              {{ "instance.viewer.customer.grossincome" | translate }}
+              <p-sortIcon field="yearlyGrossIncome"></p-sortIcon>
+            </th>
+            <th pSortableColumn="incomeCode">
+              {{ "instance.viewer.customer.incomecd" | translate }}
+              <p-sortIcon field="incomeCode"></p-sortIcon>
+            </th>
+            <th pSortableColumn="branchCode">
+              {{ "instance.viewer.customer.branch" | translate }}
+              <p-sortIcon field="branchCode"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-customer>
+          <tr>
+            <td>{{ customer.kdCifNasabah }}</td>
+            <td>{{ customer.kdIdentitas }}</td>
+            <td>{{ customer.nik }}</td>
+            <td>{{ customer.namaNasabah }}</td>
+            <td>{{ customer.npwp }}</td>
+            <td>{{ customer.jmlPenghasilanKotor }}</td>
+            <td>{{ customer.kdPenghasilan }}</td>
+            <td>{{ customer.kdCab }}</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="8">There are no data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-dialog>
+
+    <p-dialog [(visible)]="accountDialog" header="List Of Account" [style]="{width: '1500px'}" [modal]="true">
+      <p-table [value]="listOfAccount" dataKey="Id" [scrollable]="true" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.acctno" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.opendt" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.balance" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.blocked" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.purpose" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.accstatus" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{ "instance.viewer.account.curr" | translate }}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-account>
+          <tr>
+            <td>{{ account.noRekening }}</td>
+            <td>{{ account.tglBukaRek }}</td>
+            <td>{{ account.saldo }}</td>
+            <td>{{ account.saldoDiblokir }}</td>
+            <td>{{ account.tujuanBukaRek }}</td>
+            <td>{{ account.statusRek }}</td>
+            <td>{{ account.mataUang }}</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="7">There are no data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-dialog>
+
+    <p-dialog [(visible)]="transactionDialog" header="List Of Transaction" [style]="{width: '1500px'}" [modal]="true">
+      <p-table [value]="listOfTransaction" dataKey="Id" [scrollable]="true" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.batchno' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.trancode' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.trantype' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.cifno' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.acctno' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.acctname' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.refno' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.amount' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.news1' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+            <th pSortableColumn="">
+              {{'instance.viewer.transaction.news2' | translate}}
+              <p-sortIcon field=""></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-transaction>
+          <tr>
+            <td>{{transaction.noBatch}}</td>
+            <td>{{transaction.kdTransaksi}}</td>
+            <td>{{transaction.jnsTransaksi}}</td>
+            <td>{{transaction.kdCifNasabah}}</td>
+            <td>{{transaction.noRekening}}</td>
+            <td>{{transaction.namaRek}}</td>
+            <td>{{transaction.noReferensi}}</td>
+            <td>{{transaction.jumlah}}</td>
+            <td>{{transaction.berita1}}</td>
+            <td>{{transaction.berita2}}</td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="10">There are no data found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-dialog>
+  </nb-card-body>
+</nb-card>

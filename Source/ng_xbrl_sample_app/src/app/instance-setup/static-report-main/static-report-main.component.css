@@ -1,0 +1,16 @@
+div.item-body {
+    padding: 0rem !important;
+    margin: 0rem !important;
+}
+
+.p-listbox-list li {
+    padding: 2px;
+}
+
+nb-card-body {
+    overflow: hidden;
+}
+
+div.form-container {
+    overflow: auto;
+}

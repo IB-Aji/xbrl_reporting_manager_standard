@@ -1,0 +1,180 @@
+<nb-card>
+  <nb-card-header>{{'taxonomy.taxoMapping.formtitle'| translate}}</nb-card-header>
+  <nb-card-body>
+
+    <p-toolbar styleClass="p-mb-4">
+      <ng-template pTemplate="left">
+        <button pButton label="Submit" pTooltip="Submit to Proceed" icon="pi pi-save" class="p-button-raised p-mr-2"
+          (click)="onSubmit()"></button>
+        <button pButton label="Cancel" pTooltip="Cancel and Back" icon="pi pi-times" class="p-button-raised p-button-warning p-mr-2"
+          (click)="redirectTaxonomyMasterFormPage()"></button>
+      </ng-template>
+    </p-toolbar>
+      <nb-card>
+        <nb-card-header>{{'taxonomy.taxoMapping.entrypointtitle'| translate}}</nb-card-header>
+        <nb-card-body>
+          <div class="p-field">
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="type" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.release'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="release" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}" disabled
+                  placeholder="{{'taxonomy.taxoMapping.release'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="type" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.institution'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="institution" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}" disabled
+                  placeholder="{{'taxonomy.taxoMapping.institution'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="type" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.sector'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="sector" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}" disabled
+                  placeholder="{{'taxonomy.taxoMapping.sector'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="type" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.frequency'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="frequency" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}" disabled
+                  placeholder="{{'taxonomy.taxoMapping.frequency'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="form" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.formName'| translate}}</label>
+                <div class="col-sm-9">
+                  <p-dropdown [options]="formOption" [(ngModel)]="form" optionLabel="name" [disabled]="true"
+                  optionValue="id" name="form" placeholder="Select a {{'taxonomy.taxoMapping.formName'| translate}}">
+                </p-dropdown>
+                </div>
+              </div>
+            </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>{{'taxonomy.taxoMapping.dbtitle'| translate}}</nb-card-header>
+      <nb-card-body>
+        <div class="container">
+          <div class="row">
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="version" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbsource'| translate}}</label>
+                <div class="col-sm-9">
+                  <p-dropdown [options]="dbOption" [(ngModel)]="dbsource" optionLabel="name"
+                  optionValue="value" name="form" placeholder="Select a {{'taxonomy.taxoMapping.dbsource'| translate}}">
+                </p-dropdown>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="srvip" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbip'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="srvip" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.dbip'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="srvport" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbport'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="srvport" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.dbport'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="user" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbuser'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="user" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.dbuser'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="password" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbpassword'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="password" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.dbpassword'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="schema" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.schema'| translate}}</label>
+                <div class="col-sm-9">
+                  <input type="text" [(ngModel)]="schema" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.schema'| translate}}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="dbname" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbname'| translate}}</label>
+                <div class="col-sm-7">
+                  <input type="text" [(ngModel)]="dbname" pInputText class="p-inputtext-sm" [style]="{'width':'250px'}"
+                  placeholder="{{'taxonomy.taxoMapping.dbname'| translate}}">
+                </div>
+                <div class="col-sm-2">
+                  <button pButton type="button" class="p-button-raised p-button-warning p-mr-2" (click)="gettables()" label="Get Table"></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-sm col-sm-12">
+              <div class="row">
+                <label for="tablename" class="col-sm-3 col-form-label">{{'taxonomy.taxoMapping.dbtblname'| translate}}</label>
+                <div class="col-sm-7">
+
+                  <p-dropdown [options]="tableOption" [(ngModel)]="tablename" name="tablename" placeholder="Select a {{'taxonomy.taxoMapping.dbtblname'| translate}}">
+                </p-dropdown>
+                </div>
+                <div class="col-sm-2">
+                  <button  pButton type="button" class="p-button-raised p-button-warning p-mr-2" (click)="getColumns()" label="Auto Mapping"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>{{'taxonomy.taxoMapping.mappingtitle'| translate}}</nb-card-header>
+      <nb-card-body>
+
+        <div class="form-group form-group-sm col-sm-12">
+          <div class="row">
+            <div class="col-sm-12" *ngFor="let item of mappingList;">
+              <div class="row">
+                <label class="col-sm-6 col-form-label">{{item.elementLabel}}</label>
+                <label class="col-sm-6 col-form-label">{{item.columnName}}</label>
+                <!-- <div class="col-sm-6">
+                  <nb-select  fullWidth>
+                    <nb-option *ngFor="let item of columnOption;" value={{item}}>
+                      {{item}}
+                    </nb-option>
+                  </nb-select>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <ng2-smart-table   [settings]="settings" [source]="mappingList" ></ng2-smart-table> -->
+      </nb-card-body>
+      </nb-card>
+  </nb-card-body>
+</nb-card>

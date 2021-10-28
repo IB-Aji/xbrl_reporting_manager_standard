@@ -1,0 +1,29 @@
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+@import "~nebular-icons/scss/nebular-icons.scss";
+
+@import "themes";
+
+@import "~@nebular/theme/styles/globals";
+
+@include nb-install() {
+  @include nb-theme-global();
+}
+
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}

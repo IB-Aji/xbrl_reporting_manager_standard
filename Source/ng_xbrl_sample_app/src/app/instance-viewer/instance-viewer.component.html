@@ -1,0 +1,117 @@
+<nb-card>
+    <nb-card-header>{{'instance.viewer.title'| translate}}</nb-card-header>
+    <nb-card-body>
+
+        <div class="p-field">
+            <div class="form-group form-group-sm col-sm-12">
+                <div class="row" style="margin-bottom: 0.4rem;">
+                    <label for="taxonomy"
+                        class="col-sm-2 col-form-label form-label">{{'submission.monitoring.taxonomy'| translate}}</label>
+                    <div class="col-sm-10">
+                        <p-dropdown [options]="listOfTaxonomy" [(ngModel)]="selectedTaxonomy" optionLabel="releaseDate"
+                            placeholder="Select a Taxonomy Release">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0.4rem;">
+                    <label for="institution"
+                        class="col-sm-2 col-form-label form-label">{{'submission.monitoring.institution'| translate}}</label>
+                    <div class="col-sm-10">
+                        <p-dropdown [options]="listOfInstitution" [(ngModel)]="selectedInstitutionCode"
+                            optionLabel="value" optionValue="code" placeholder="Select a Institution">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0.4rem;">
+                    <label for="sector"
+                        class="col-sm-2 col-form-label form-label">{{'submission.monitoring.sector'| translate}}</label>
+                    <div class="col-sm-10">
+                        <p-dropdown [options]="listOfSector" [(ngModel)]="selectedSectorCode" optionLabel="value"
+                            optionValue="code" placeholder="Select a Sector">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 0.4rem;">
+                    <label for="frequency"
+                        class="col-sm-2 col-form-label form-label">{{'submission.monitoring.frequency'| translate}}</label>
+                    <div class="col-sm-10">
+                        <p-dropdown [options]="listOfFrequency" [(ngModel)]="selectedFrequencyCode" optionLabel="value"
+                            optionValue="code" (onChange)="onChangeFrequency($event)" placeholder="Select a Frequency Reporting">
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="row form-group" style="margin-bottom: 0.4rem;">
+                    <label for="period"
+                        class="col-sm-2 col-form-label form-label">{{'submission.monitoring.dataPeriod'| translate}}</label>
+                    <div class="col-sm-10">
+                        <p-calendar [(ngModel)]="dataPeriod" [dateFormat]="periodFormat" [showIcon]="true"
+                            inputId="icon">
+                        </p-calendar>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-10">
+                        <button pButton type="button" icon="pi pi-search" iconPos="left" label="Search"
+                            class="p-button-raised " (click)="searchData($event)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p-table #dtSubmission [value]="listOfSummary" dataKey="ljkCode" [rows]="10" [showCurrentPageReport]="true"
+            styleClass="p-datatable-gridlines p-datatable-sm" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} records">
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th rowspan="2" style="width: 3rem"></th>
+                    <th rowspan="2" pSortableColumn="ljkCode" style="width: 12rem">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="ljkCode"></p-sortIcon>
+                            LJK Code
+                            <p-columnFilter type="text" field="ljkCode" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th rowspan="2" pSortableColumn="ljkName" style="width: 30rem">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="ljkName"></p-sortIcon>
+                            LJK Name
+                            <p-columnFilter type="text" field="ljkName" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th rowspan="2" pSortableColumn="dataPeriod" style="width: 10rem">
+                        <div class="p-d-flex p-jc-between p-ai-center">
+                            <p-sortIcon field="dataPeriod"></p-sortIcon>
+                            Data Period
+                            <p-columnFilter type="text" field="dataPeriod" display="menu"></p-columnFilter>
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-summary let-expanded="expanded">
+                <tr>
+                    <td>
+                        <button type="button" pButton pRipple [pRowToggler]="summary"
+                            class="p-button-text p-button-rounded p-button-plain"
+                            [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+                    </td>
+                    <td>{{summary.ljkCode}}</td>
+                    <td>{{summary.ljkName}}</td>
+                    <td>{{summary.dataPeriod}}</td>
+                </tr>
+            </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="4">There are no data found.</td>
+            </tr>
+        </ng-template>
+        </p-table>
+
+        <br />
+
+    </nb-card-body>
+</nb-card>

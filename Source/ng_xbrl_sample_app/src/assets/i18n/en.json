@@ -1,0 +1,311 @@
+{
+  "menu": {
+    "home": {
+      "group": "Home",
+      "dashboard": "Dashboard"
+    },
+    "master": {
+      "group": "Master Data",
+      "ljk": "Financial Services Institutions",
+      "location": "Master Area",
+      "userrole": "User & Role",
+      "user": "User",
+      "role": "Role",
+      "access": "Access List",
+      "masterparam": "Master Parameter",
+      "parameter": "Parameter"
+    },
+    "taxonomy": {
+      "group": "Taxonomy Setup",
+      "upload": "Taxonomy Upload",
+      "taxoSetup": "Entry Point",
+      "taxoMapping": "Taxonomy Master Forms"
+    },
+    "instance": {
+      "group": "Instance",
+      "setup": "Instance Setup",
+      "create": "Create Instance",
+      "validation": "Instance Validation",
+      "compress": "Instance Compression"
+    },
+    "submission": {
+      "group": "Submission",
+      "submit": "Submit Reporting",
+      "monitoring": "Monitoring"
+    },
+    "monitoring": {
+      "group": "Instance Monitoring",
+      "instance": "Instance Viewer"
+    }
+  },
+  "master": {
+    "ljk": {
+      "listtitle": "Financial Services Institutions (LJK)",
+      "formtitle": "LJK Details",
+      "name": "LJK Name",
+      "code": "LJK Code",
+      "institutionType": "Institution Type",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "area": {
+      "listtitle": "Master Area",
+      "formtitle": "Area Details",
+      "name": "Area Name",
+      "code": "Code",
+      "level": "Level",
+      "parent": "Parent Area",
+      "point": "Point"
+    },
+    "user": {
+      "listtitle": "List Of User",
+      "formtitle": "User Details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "retypepassword": "Retype Password",
+      "role": "Roles",
+      "userType": "User Type",
+      "institutionType": "Institution Type",
+      "ljk": "LJK",
+      "selectrole": "Select Role",
+      "selectuserType": "Select User Type",
+      "selectinstitutionType": "Select Institution Type",
+      "selectljk": "Select LJK",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "role": {
+      "listtitle": "List Of Role",
+      "formtitle": "Role Details",
+      "name": "Role Name",
+      "desc": "Description",
+      "access": "Access List",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "access": {
+      "listtitle": "List Of Access",
+      "formtitle": "Access Details",
+      "name": "Access Name",
+      "type": "Type",
+      "desc": "Description",
+      "path": "Path",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "parameter": {
+      "listtitle": "List Of Parameter",
+      "formtitle": "Parameter Information",
+      "type": "Parameter Type",
+      "selecttype": "Select Parameter Type",
+      "code": "Parameter Code",
+      "value": "Parameter Value",
+      "desc": "Description",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "password": {
+      "title": "Password Policy",
+      "minimum": "Minimum Password Length",
+      "maximum": "Maximal Password Length",
+      "expiry": "Password Expired",
+      "maxfail": "Maximal Password Fail",
+      "alphabet": "Must Contain Alphabet",
+      "numeric": "Must Contain Numeric",
+      "specialchar": "Must Contain Spesial Character",
+      "pattern": "Password Pattern",
+      "chars": "Character(s)",
+      "attemps": "Attemps",
+      "days": "Day(s)"
+    }
+  },
+  "taxonomy": {
+    "upload": {
+      "listtitle": "List Of Taxonomy",
+      "formtitle": "Taxonomy Details",
+      "file": "Taxonomy File",
+      "date": "Release Date",
+      "version": "Version",
+      "desc": "Description",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "taxoSetup": {
+      "listtitle": "List Of Entry Point",
+      "formtitle": "Entry Point Setup",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "sector": "Sector",
+      "frequency": "Frequency Reporting",
+      "path": "Entry Point Path",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    },
+    "taxoMapping": {
+      "listtitle": "List Of Taxonomy Master Forms",
+      "formtitle": "Taxonomy Master Form Details",
+      "entrypointtitle": "Entry Point Form",
+      "mappingtitle": "Mapping Form",
+      "release": "Taxonomy Release",
+      "institution": "Institution",
+      "sector": "Sector",
+      "frequency": "Frequency Reporting",
+      "formName": "Taxonomy Form Name",
+      "formFile": "Taxonomy Form File",
+      "dbtitle": "Database Form",
+      "dbsource": "Database Source",
+      "dbip": "Database IP Address",
+      "dbport": "Database Port",
+      "dbuser": "Database User",
+      "dbpassword": "Database Password",
+      "dbname": "Database Name",
+      "schema": "Schema Name",
+      "dbtblname": "Database Table Name",
+      "status": "Status",
+      "updateBy": "Last Update By",
+      "updateDate": "Last Update Date"
+    }
+  },
+  "submission": {
+    "submit": {
+      "title": "Submission of Report",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "dataPeriod": "Data Period",
+      "sector": "Sector",
+      "file": "File"
+    },
+    "monitoring": {
+      "title": "Submission Monitoring",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "dataPeriod": "Data Period",
+      "sector": "Sector"
+    }
+  },
+  "instance": {
+    "viewer": {
+      "title": "Instance Viewer",
+      "customer": {
+        "listtitle": "List Of Customer",
+        "detailtitle": "Customer Details",
+        "id": "ID",
+        "cifno": "CIF Number",
+        "idtype": "Identity Type",
+        "idno": "Identity Number",
+        "name": "Customer Name",
+        "fullname": "Full Name",
+        "statuscd": "Status Code",
+        "gender": "Gender",
+        "birthplace": "Birth Place",
+        "birthdate": "Birth Date",
+        "npwp": "NPWP",
+        "address": "Address",
+        "postalcd": "Postal Code",
+        "phonenumber": "Phone Number",
+        "mobilenumber": "Mobile Phone Number",
+        "email": "E - Mail",
+        "countrycd": "Country Code",
+        "workplace": "Workplace",
+        "workplaceaddr": "Workplace Address",
+        "grossincome": "Yearly Gross Income",
+        "incomecd": "Income Code",
+        "marital": "Marital Status",
+        "mother": "Mother Name",
+        "branch": "Branch"
+      },
+      "account": {
+        "listtitle": "List Of Account",
+        "id": "ID",
+        "acctype": "Account Type",
+        "acctno": "Account Number",
+        "opendt": "Open Date",
+        "balance": "Balance",
+        "blocked": "Blocked Balance",
+        "purpose": "Account Purpose",
+        "accstatus": "Account Status",
+        "curr": "Currency"
+      },
+      "transaction": {
+        "listtitle": "List Of Transaction",
+        "id": "ID",
+        "trancode": "Transacion Code",
+        "trantype": "Transaction Type",
+        "batchno": "batch Number",
+        "cifno": "CIF Number",
+        "acctno": "Account Number",
+        "desc": "Description",
+        "postdate": "Posting Date",
+        "refno": "Reference Number",
+        "acctname": "Account Number",
+        "amount": "Transaction Amount",
+        "news1": "News 1",
+        "news2": "News 2"
+      }
+    },
+    "setup": {
+      "title": "Instance Setup",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "sector": "Sector",
+      "form": "Taxonomy Form",
+      "taxonomyFile": "Taxonomy File",
+      "instanceFile": "Instance File",
+      "dataPeriod": "Data Period",
+      "version": "Version",
+      "processId": "Process Id",
+      "instanceStatus": "Instance Status",
+      "instanceCreateBy": "Instance Create By",
+      "instanceCreateDate": "Instance Create Date",
+      "validationStatus": "Validation Status",
+      "validationCreateBy": "Validation Create By",
+      "validationCreateDate": "Validation Create Date"
+    },
+    "create": {
+      "title": "Create Instance",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "sector": "Sector",
+      "form": "Taxonomy Form",
+      "instanceFile": "Instance File",
+      "dataPeriod": "Data Period",
+      "version": "Version",
+      "processId": "Process Id",
+      "status": "Status",
+      "createBy": "Create By",
+      "createDate": "Create Date"
+    },
+    "validation": {
+      "title": "Instance Validation",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "dataPeriod": "Data Period",
+      "sector": "Sector"
+    },
+    "compress": {
+      "title": "Instance Compression & Submission",
+      "taxonomy": "Taxonomy Release",
+      "institution": "Institution",
+      "frequency": "Frequency Reporting",
+      "dataPeriod": "Data Period",
+      "sector": "Sector"
+    }
+  }, 
+  "static-report": {
+    "title" : "Static Report Setup"
+  }
+}
