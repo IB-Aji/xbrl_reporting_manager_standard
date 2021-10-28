@@ -1,2 +1,2 @@
-# xbrl_sample_app
-XBRL Sample App
+# xbrl_reporting_manager_standard
+XBRL Reportin Manager Standard Sample App
