@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "3f736bba-6605-454a-a233-adcd88442918",
+		"name": "DJP XBRL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"user@bcm.id\",\"password\":\"aaa\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate2"
+					]
+				},
+				"description": "Authentication endpoint with plain text password"
+			},
+			"response": []
+		},
+		{
+			"name": "Check Instance Validation & Creation ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQGJjbS5pZCIsImV4cCI6MTYzNTI0MTExNywiaWF0IjoxNjM1MjIzMTE3fQ.jRXFKvAjFQpqrUVYEPuOnclCorJClxQH9C87Ofv5XvNvS79BsFs3oD6VRI9dRu3lK-aJN-2fsNMfG9-LEJXcBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/static-report-setup/before-main/all-headers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"static-report-setup",
+						"before-main",
+						"all-headers",
+						"1"
+					]
+				},
+				"description": "Query current status of submission"
+			},
+			"response": []
+		}
+	]
+}
