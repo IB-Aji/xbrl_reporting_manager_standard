@@ -1,8 +1,10 @@
 package com.fujitsu.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import com.fujitsu.model.JwtRequest;
+import com.fujitsu.model.PageableObject;
 import com.fujitsu.service.RestClientService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +27,11 @@ public class RestClientController {
         return restClientService.testAuthenticate(authRequest);
     }
 
-    @RequestMapping(value = "/all-headers", method = RequestMethod.POST)
-    public ResponseEntity<?> getListOfStaticReport(@RequestHeader Map<String, String> header,
+    @RequestMapping(value = "/sample-all-headers", method = RequestMethod.POST)
+    public PageableObject<List<String>> getListOfStaticReportNySample(
+            @RequestHeader Map<String, String> header,
             @RequestBody String payload) {
-        return restClientService.getListOfStaticReport(header, payload);
+        return restClientService.getListOfStaticReportBySample(header, payload);
     }
 
 }
