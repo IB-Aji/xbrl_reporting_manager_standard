@@ -27,8 +27,8 @@ public class RestClientController {
         return restClientService.testAuthenticate(authRequest);
     }
 
-    @RequestMapping(value = "/sample-all-headers", method = RequestMethod.POST)
-    public PageableObject<List<String>> getListOfStaticReportNySample(
+    @RequestMapping(value = "/all-headers", method = RequestMethod.POST)
+    public PageableObject<List<String>> getListOfStaticReportBySample(
             @RequestHeader Map<String, String> header,
             @RequestBody String payload) {
         return restClientService.getListOfStaticReportBySample(header, payload);
